@@ -94,19 +94,16 @@ describe OmniauthTenantSetup do
         oidc_client_id: "default-client-id",
         oidc_client_secret: "default-client-secret",
         oidc_issuer: "https://default-oidc.example.com",
-        oidc_redirect_uri: "https://default.consul.dev/auth/oidc/callback",
         tenants: {
           mars: {
             oidc_client_id: "mars-client-id",
             oidc_client_secret: "mars-client-secret",
             oidc_issuer: "https://mars-oidc.example.com",
-            oidc_redirect_uri: "https://mars.consul.dev/auth/oidc/callback"
           },
           venus: {
             oidc_client_id: "venus-client-id",
             oidc_client_secret: "venus-client-secret",
             oidc_issuer: "https://venus-oidc.example.com",
-            oidc_redirect_uri: "https://venus.consul.dev/auth/oidc/callback"
           }
         }
       )
@@ -123,7 +120,6 @@ describe OmniauthTenantSetup do
         expect(mars_strategy_options[:client_id]).to eq "mars-client-id"
         expect(mars_strategy_options[:client_secret]).to eq "mars-client-secret"
         expect(mars_strategy_options[:issuer]).to eq "https://mars-oidc.example.com"
-        expect(mars_strategy_options[:redirect_uri]).to eq "https://mars.consul.dev/auth/oidc/callback"
       end
 
       Tenant.switch("venus") do
@@ -138,7 +134,6 @@ describe OmniauthTenantSetup do
         expect(venus_strategy_options[:client_id]).to eq "venus-client-id"
         expect(venus_strategy_options[:client_secret]).to eq "venus-client-secret"
         expect(venus_strategy_options[:issuer]).to eq "https://venus-oidc.example.com"
-        expect(venus_strategy_options[:redirect_uri]).to eq "https://venus.consul.dev/auth/oidc/callback"
       end
     end
 
@@ -149,13 +144,11 @@ describe OmniauthTenantSetup do
         oidc_client_id: "default-client-id",
         oidc_client_secret: "default-client-secret",
         oidc_issuer: "https://default-oidc.example.com",
-        oidc_redirect_uri: "https://default.consul.dev/auth/oidc/callback",
         tenants: {
           mars: {
             oidc_client_id: "mars-client-id",
             oidc_client_secret: "mars-client-secret",
             oidc_issuer: "https://mars-oidc.example.com",
-            oidc_redirect_uri: "https://mars.consul.dev/auth/oidc/callback"
           }
         }
       )
@@ -172,7 +165,6 @@ describe OmniauthTenantSetup do
         expect(earth_strategy_options[:client_id]).to eq "default-client-id"
         expect(earth_strategy_options[:client_secret]).to eq "default-client-secret"
         expect(earth_strategy_options[:issuer]).to eq "https://default-oidc.example.com"
-        expect(earth_strategy_options[:redirect_uri]).to eq "https://default.consul.dev/auth/oidc/callback"
       end
     end
   end

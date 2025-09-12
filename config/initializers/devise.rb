@@ -306,7 +306,6 @@ Devise.setup do |config|
                   client_options: {
                     identifier: Rails.application.secrets.oidc_client_id,
                     secret: Rails.application.secrets.oidc_client_secret,
-                    redirect_uri: Rails.application.secrets.oidc_redirect_uri
                   },
                   setup: ->(env) { OmniauthTenantSetup.oidc(env) }
 

@@ -23,7 +23,7 @@ module OmniauthTenantSetup
 
     def oidc(env)
       oidc_auth(env, secrets.oidc_client_id,
-                secrets.oidc_client_secret, secrets.oidc_issuer, secrets.oidc_redirect_uri)
+                secrets.oidc_client_secret, secrets.oidc_issuer)
     end
 
     private
@@ -60,14 +60,13 @@ module OmniauthTenantSetup
         end
       end
 
-      def oidc_auth(env, client_id, client_secret, issuer, redirect_uri)
+      def oidc_auth(env, client_id, client_secret, issuer)
         unless Tenant.default?
           strategy = env["omniauth.strategy"]
 
           strategy.options[:client_id] = client_id if client_id.present?
           strategy.options[:client_secret] = client_secret if client_secret.present?
           strategy.options[:issuer] = issuer if issuer.present?
-          strategy.options[:redirect_uri] = redirect_uri if redirect_uri.present?
         end
       end
 
